@@ -59,14 +59,14 @@ public class CardRest {
 		
 	}
 	
-	@GetMapping(value = "/{customer_id}")
-	public ResponseEntity<List<Card>> getCardsByCustomerId(@PathVariable("customer_id") long customerId) {
+	@GetMapping(value = "/{id}")
+	public ResponseEntity<List<Card>> getCardsByCustomerId(@PathVariable("id") long id) {
 		List<Card> cards = new ArrayList<>();
-		cards = cardService.findCardsByCustomerId(customerId);
+		cards = cardService.findCardsByCustomerId(id);
 		if (cards == null) {
-			log.error("Cards with customerId {} not found.", customerId);
+			log.error("Cards with id {} not found.", id);
 			return ResponseEntity.notFound().build();
 		}
-		return ResponseEntity.notFound().build();
-		}
+		return ResponseEntity.ok(cards);
+	}
 }
