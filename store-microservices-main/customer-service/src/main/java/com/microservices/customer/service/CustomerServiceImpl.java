@@ -1,19 +1,18 @@
 package com.microservices.customer.service;
 
 import lombok.extern.slf4j.Slf4j;
-import model.Card;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.microservices.customer.repository.CustomerRepository;
-
-import client.CardClient;
-
+import com.microservices.costumer.client.CardClient;
 import com.microservices.customer.entity.Customer;
 import com.microservices.customer.entity.Region;
+import com.microservices.customer.model.Card;
 
 import java.util.List;
+
 @Slf4j
 @Service
 public class CustomerServiceImpl  implements CustomerService {

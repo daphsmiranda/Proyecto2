@@ -1,4 +1,4 @@
-package model;
+package com.microservices.customer.model;
 
 import java.util.Date;
 

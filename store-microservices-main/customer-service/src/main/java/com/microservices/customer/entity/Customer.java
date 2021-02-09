@@ -1,8 +1,9 @@
 package com.microservices.customer.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.microservices.customer.model.Card;
+
 import lombok.Data;
-import model.Card;
 
 import javax.persistence.*;
 import javax.validation.Valid;

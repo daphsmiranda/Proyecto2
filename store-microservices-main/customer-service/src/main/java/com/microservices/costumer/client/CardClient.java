@@ -1,10 +1,11 @@
-package client;
+package com.microservices.costumer.client;
 
 import java.util.List;
 
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.RequestMapping;
-import model.Card;
+
+import com.microservices.customer.model.Card;
 
 @FeignClient(name = "payment-service")
 @RequestMapping("/cards")
