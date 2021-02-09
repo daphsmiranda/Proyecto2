@@ -1,10 +1,15 @@
 package com.microservices.customer.service;
 
 import lombok.extern.slf4j.Slf4j;
+import model.Card;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.microservices.customer.repository.CustomerRepository;
+
+import client.CardClient;
+
 import com.microservices.customer.entity.Customer;
 import com.microservices.customer.entity.Region;
 
@@ -15,6 +20,9 @@ public class CustomerServiceImpl  implements CustomerService {
 
     @Autowired
     CustomerRepository customerRepository;
+    
+    @Autowired
+    CardClient cardClient;
 
     @Override
     public List<Customer> findCustomerAll() {
@@ -65,6 +73,11 @@ public class CustomerServiceImpl  implements CustomerService {
 
     @Override
     public Customer getCustomer(Long id) {
-        return  customerRepository.findById(id).orElse(null);
+    	Customer customer = customerRepository.findById(id).orElse(null);
+    	if (customer != null) {
+    		List<Card> cards = cardClient.findCardsByCustomerId(customer.getId());
+    		customer.setCards(cards);
+    	}
+        return  customer;
     }
 }

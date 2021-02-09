@@ -2,13 +2,16 @@ package com.microservices.customer.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
+import model.Card;
 
 import javax.persistence.*;
+import javax.validation.Valid;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
+import java.util.List;
 
 @Data
 @Entity
@@ -47,4 +50,7 @@ public class Customer implements Serializable {
     private Region region;
 
     private String state;
+    
+    @Transient
+    private List<Card> cards;
 }
